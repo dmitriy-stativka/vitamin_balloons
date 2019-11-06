@@ -2,6 +2,7 @@ body{
   font: 14px/1 'Montserrat', sans-serif;
   font-weight: 500;
   color: #373a4f;
+  background-image: url('../images/body.png');
 }
 
 a{
@@ -93,8 +94,61 @@ a.balloons-button{
   box-shadow: 0 2px 12px rgba(219, 96, 98, 0.36);
   border-radius: 28px;
   background-image: linear-gradient(0deg, #db6062 0%, #f2a7a1 100%);
+  opacity: .8;
+  transition: opacity .3s ease;
   color: $white;
   padding: 18px 35px;
   font-weight: 700;
   display: inline-block;
+
+  &:hover{
+    opacity: 1;
+    transition: opacity .3s ease;
+  }
+}
+.block-title{
+  text-align: center;
+  padding: 0px 0 50px 0;
+
+  b{
+    font-size: 52px;
+    font-weight: 900;
+    letter-spacing: 1.3px;
+    line-height: 79px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    &:after,
+    &:before{
+      content: '';
+      width: 23px;
+      height: 23px;
+      background: url('../images/star.png') no-repeat center center;
+      display: block;
+      margin: 0 20px;
+    }
+  }
+
+  span{
+    opacity: 0.9;
+    color: #db6062;
+    font-family: 'Caveat';
+    font-size: 32px;
+    font-weight: 700;
+    display: block;
+    margin: 15px 0;
+  }
+
+  p{
+    margin: 15px auto;
+    max-width: 850px;
+    font-size: 17px;
+  }
+}
+
+
+.text-center{
+  text-align: center;
 }

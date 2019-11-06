@@ -1,11 +1,11 @@
 .top{
   &-site{
-    background: url('../images/top-site.png') no-repeat center top;
+    background: url('../images/top-site.png') no-repeat center bottom;
     background-size: cover;
     padding: 150px 50px;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     position: relative;
-
     
     b{
       font-family: 'Caveat';
@@ -14,6 +14,8 @@
       letter-spacing: 1.55px;
       line-height: 58px;
       text-shadow: 6px 8px 2px rgba(0,0,0,0.15);
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: #373a4f;
     }
   
     p{

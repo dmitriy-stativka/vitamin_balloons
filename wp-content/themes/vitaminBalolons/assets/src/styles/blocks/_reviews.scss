@@ -1,0 +1,200 @@
+.reviews{
+  background: url('../images/sky.png') no-repeat center bottom;
+  background-size: contain;
+  padding: 150px 0;
+
+  &-list{
+    margin: 0 -15px;
+  }
+
+  .slick{
+    &-list{
+      overflow: unset!important;
+    }
+
+    &-slide{
+      padding: 30px;
+      background-color: $white;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.16);
+      border-radius: 20px;
+      margin: 15px;
+      float: none;
+      height: inherit;
+      outline: none;
+    }
+
+    &-track{
+      display: flex;
+    }
+  }
+
+  .testimonial{
+    &-image{
+      width: 60px;
+      height: 60px;
+      overflow: hidden;
+      border-radius: 50px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16);
+    }
+
+    &-all{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      border-radius: 13px;
+      background-color: rgba(244, 226, 200, .15);
+      padding: 15px;
+    }
+
+    &-field{
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.33px;
+    }
+
+    &-name{
+      flex: 1;
+      margin: 0 15px;
+
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.42px;
+      line-height: 21px;
+      color: $red;
+    }
+  }
+}
+
+.slick{
+  &-dots{
+    position: absolute;
+    bottom: -50px;
+    display: block;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+
+    li{
+      position: relative;
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 0 3px;
+      padding: 0;
+      cursor: pointer;
+
+      button{
+        font-size: 0;
+        line-height: 0;
+        display: block;
+        width: 10px;
+        height: 10px;
+        padding: 0px;
+        cursor: pointer;
+        color: transparent;
+        border: 1px solid $white;
+        outline: none;
+        background: $white;
+        border-radius: 7px;
+
+        &:hover,
+        &:focus{
+          outline: none;
+          background: $pink;
+          border: 1px solid $pink;
+        }
+      }
+
+      &.slick-active {
+        background: $pink;
+        border-radius: 7px;
+        width: 25px;
+    
+        button{
+          background: $pink;
+          border: $pink;
+        }
+      }
+    }
+  }
+
+  &-next,
+  &-prev{
+    font-size: 0;
+    line-height: 0; 
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: -54px;
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    opacity: 1;
+    cursor: pointer;
+    z-index: 2;
+    color: transparent;
+    border: none;
+    outline: none;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+
+    &:before{
+      font-family: 'slick';
+      font-size: 20px;
+      line-height: 1;
+      margin: 0 auto;
+      opacity: .75;
+      color: white;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: url("../images/arrow.png") no-repeat 0px 1.8px;
+      -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      -o-transform: rotate(180deg);
+      transform: rotate(180deg);
+    }
+
+    &:hover{
+      color: transparent;
+      outline: none;
+    }
+  
+    &.slick-disabled{
+      &:before{
+        opacity: .25;
+      }
+    }
+  }
+
+  &-prev{
+    right: 200px;
+    bottom: -56px;
+  }
+
+  &-next{
+    right: -200px;
+  }
+}
+
+
+
+

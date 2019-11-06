@@ -128,7 +128,33 @@ function utg_scripts() {
 
 	wp_deregister_script( 'jquery' );
 	wp_enqueue_script( 'jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js', array(), null, true );
-	wp_enqueue_script( 'slick-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js', array(), null, true );
+    wp_enqueue_script( 'slick-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js', array(), null, true );
+
+    wp_enqueue_script( 'sky-js', 'https://cdnjs.cloudflare.com/ajax/libs/Sly/1.6.1/sly.min.js', array(), null, true );
+
+    wp_enqueue_script( 'app.min.js', get_template_directory_uri() ."/js/app.min.js" , array(), null, true );
+
+
+
+
+
+
+
+    
+    wp_enqueue_script('ajax-load', get_template_directory_uri() . '/js/ajax-load.js', array(), null, true);
+    
+    wp_localize_script( 'ajax-load', 'ajax_vars',
+    array(
+        'ajax_url' => admin_url( 'admin-ajax.php' ),
+        'nonce' => wp_create_nonce( 'ajax-nonce' ),
+        'home_url' => get_bloginfo( 'url' )
+    ));
+    
+    
+
+
+
+    
 	
 
 	wp_enqueue_script( 'utg-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
@@ -186,6 +212,33 @@ if ( class_exists( 'WooCommerce' ) ) {
 
 
 
+register_post_type('products', array(
+    'labels'             => array(
+        'name'               => 'Товары', // Основное название типа записи
+        'singular_name'      => 'Товары', // отдельное название записи типа Book
+        'add_new'            => 'Добавить товар',
+        'add_new_item'       => 'Добавить новый товар',
+        'edit_item'          => 'Редактировать товар',
+        'new_item'           => 'Новый товар',
+        'view_item'          => 'Посмотреть товар',
+        'search_items'       => 'Найти сервис',
+        'not_found'          => 'Не найдено',
+        'not_found_in_trash' => 'В корзине ничего не найдено',
+        'parent_item_colon'  => '',
+        'menu_name'          => 'Товары'
+      ),
+    'public'             => true,
+    'publicly_queryable' => true,
+    'show_ui'            => true,
+    'show_in_menu'       => true,
+    'query_var'          => true,
+    'rewrite'            => true,
+    'capability_type'    => 'post',
+    'has_archive'        => false,
+    'hierarchical'       => false,
+    'menu_position'      => null,
+    'supports'            => array( 'title', 'comments'  )  // 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields',
+));
 
 
 
@@ -196,3 +249,81 @@ if ( class_exists( 'WooCommerce' ) ) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*ajax load post*/
+add_action( 'wp_ajax_loader_posts', 'posts_loader' );
+add_action( 'wp_ajax_nopriv_loader_posts', 'posts_loader' );
+
+function posts_loader() {
+	$nonce = $_POST['nonce'];
+
+	if ( wp_verify_nonce( $nonce, 'ajax-nonce' ) ) {
+		if ( ! isset( $_POST['productID'] ) ) {
+			return;
+		}
+
+		$postOffset  = $_POST['productID'];
+
+		$params = array(
+			'post_type'      => $post_type,
+			'posts_per_page' => $post_perpage,
+			'offset'         => $post_offset,
+		);
+		$query  = new WP_Query( $params );
+		ob_start();
+		?>
+		<?php if ( $query->have_posts() ): ?>
+			<?php while ( $query->have_posts() ): $query->the_post() ?>
+
+
+            <?php $desc = get_field('description');?>
+
+
+
+
+				<div class="popup">
+					<a href="<?php echo the_permalink( $post->ID ); ?>" class="popup_link">
+						<div class="popup_image">
+							<?php echo get_the_post_thumbnail( $post->ID ); ?>
+						</div>
+						<div class="popup_text">
+							<span class="popup-title"><?php the_title(); ?></span>
+						</div>
+
+                        <?php echo $description;?>
+
+					</a>
+				</div>
+
+
+                
+
+
+			<?php endwhile; ?>
+		<?php endif; ?>
+
+		<?php
+		$content = ob_get_clean();
+		wp_reset_query();
+
+		echo json_encode( array(
+			'content'   => $content,
+			'postTotal' => ''
+		) );
+		exit;
+	}
+	wp_die();
+}

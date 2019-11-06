@@ -19,10 +19,16 @@
 
 <?php wp_footer(); ?>
 
-<!-- <script>
-    $('.top-site-row').xeyes();
-</script> -->
+<script>
 
+$('.reviews-list').slick({
+  infinite: false,
+  slidesToShow: 3,
+  slidesToScroll: 2,
+  dots: true
+});
+
+</script>
 
 </body>
 </html>

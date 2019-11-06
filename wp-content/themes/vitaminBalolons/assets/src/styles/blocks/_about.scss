@@ -1,0 +1,73 @@
+.about{
+  padding: 100px 0 0 0;
+
+  .block-title{
+    text-align: left;
+
+    b{
+      justify-content: left;
+      margin-left: -10%;
+    }
+
+    p{
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 29px;
+    }
+  }
+
+  &-item{
+    position: relative;
+    font-family: 'Caveat';
+    display: flex;
+    align-items: center;
+
+    p{
+      
+      font-size: 29px;
+      font-weight: 700;
+      letter-spacing: 0.72px;
+      line-height: 29px;
+    }
+
+    span{
+      color: $red;
+      font-size: 58px;
+      font-weight: 700;
+      letter-spacing: 1.45px;
+      margin: 25px 25px 0;
+      position: relative;
+
+      &:after{
+        content: '';
+        width: 10px;
+        height: 55px;
+        background: url('../images/lines.png') no-repeat;
+        background-size: cover;
+        position: absolute;
+        bottom: -90%;
+        left: 10px;
+      }
+    }
+
+    &:nth-child(2){
+      span{
+        &:after{
+          transform: scale(-1, 1);
+          right: 0;
+          left: inherit;
+          height: 40px;
+          bottom: -35px;
+        }
+      }
+    }
+
+    &:last-child{
+      span{
+        &:after{
+          display: none;
+        }
+      }
+    }
+  }
+}
