@@ -232,6 +232,15 @@
             <b>Отзывы</b>
             <span>Что говорят о нас?</span>
             <p>Люди доверяют нам украшение важных моментов в жизни, и мы благодарим их за доверие качественной работой.</p>
+
+
+            <a id="buttonReview" class="popup__toggle">Оставить отзыв</a>
+           
+               
+                   
+            
+
+
         </div>
         <div class="reviews-container">
             <div class="reviews-list">
@@ -243,13 +252,9 @@
     
 
 
+<div class="sale">
 
-
-
-
-
-
-
+</div>
 
 
 
