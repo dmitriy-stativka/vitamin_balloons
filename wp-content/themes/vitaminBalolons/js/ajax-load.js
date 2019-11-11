@@ -15,11 +15,12 @@ jQuery(document).ready(function ($) {
 
   var ajaxIsActive = false;
 
-  $('body').on('click', '.example-item', function (e) {
+  $('body').on('click', '.btn-more', function (e) {
       e.preventDefault();
       if (ajaxIsActive) return;
       let $btn = $(this),
-          $postOffset  = $btn.attr('post-id');
+          postOffset = $btn.attr('post');
+         
 
       $.ajax({
           type: "POST",
@@ -39,7 +40,7 @@ jQuery(document).ready(function ($) {
               ajaxIsActive = false;
               scrollToElement($btn, -30, 800);
               data = response.responseJSON;
-              $('.main-news__items-wrapp').append(data.content);
+              $('.guide_row').append(data.content);
               postOffset = parseInt(postOffset) + parseInt(postPerpage);
               if (postOffset >= postTotal) {
                   $btn.hide();

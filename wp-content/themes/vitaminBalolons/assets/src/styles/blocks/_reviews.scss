@@ -218,23 +218,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .popup{
   display: inline-block;
   position: relative;
@@ -247,7 +230,8 @@
     display: none;
   }
 
-  &__overlay {
+  &__overlay,
+  &__call--back {
     position: fixed;
     left: 0;
     top: 0;
@@ -275,7 +259,8 @@
     }
   }
 
-  &_open {
+  &_open,
+  &_open_in {
     -webkit-transform: scale(1);
     -ms-transform: scale(1);
     -o-transform: scale(1);
@@ -286,14 +271,45 @@
 
   &__close {
     display: block;
-    position: fixed;
+    position: absolute;
     top: 30px;
     right: 30px;
-    width: 18px;
-    height: 18px;
+    width: 35px;
+    height: 35px;
     cursor: pointer;
-    background: url(images/popup-close.png) no-repeat;
-    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+
+    &:after,
+    &:before{
+      content: '';
+      height: 3px;
+      width: 15px;
+      display: block;
+      border-radius: 3px;
+      background-color: #db6062;
+      transform: rotate(45deg);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin: auto;
+    }
+
+    &:before{
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__body{
+    span{
+      opacity: 0.5;
+      color: #4a4d60;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 29px;
+    }
   }
 
   b{
@@ -301,6 +317,9 @@
     font-weight: 700;
     letter-spacing: 0.65px;
     line-height: 34px;
+    width: 400px;
+    display: block;
+    margin: 0 auto;
   }
 
   input{
@@ -319,8 +338,6 @@
     outline: none;
   }
  
-
-
   #wpmtst-submission-form{
     display: flex;
     flex-wrap: wrap;
@@ -335,5 +352,114 @@
         flex-basis: 100%;
       }
     }
+
+    .wpmtst-submit{
+      label{
+        width: 100%;
+      }
+      input{
+        color: $white;
+        box-shadow: 0 2px 12px rgba(219, 96, 98, 0.36);
+        border-radius: 28px;
+        border: 1px solid $white;
+        max-width: 225px;
+        width: 100%;
+        margin: 0 auto;
+        background-image: linear-gradient(-1deg, #db6062 0%, #f2a7a1 100%);
+      }
+    }
   }
+
+  &__in{
+    background: url('../images/bg_callBack.png') no-repeat center center;
+    background-size: contain;
+    max-width: 880px;
+    width: 100%;
+    padding: 80px 80px 60px 80px;
+
+    .popup__close{
+      right: 60px;
+      top: 35px;
+    }
+
+    .balloons-button{
+      padding: 20px 15px;
+    }
+
+    .block-title{
+      padding: 0;
+
+      b{
+        font-family: 'Caveat';
+        font-size: 42px;
+        font-weight: 700;
+        width: 100%;
+        display: flex;
+        text-transform: none;
+      }
+
+      p{
+        font-size: 14px;
+        margin: 20px 0;
+      }
+    }    
+
+    br{
+      display: none;
+    }
+
+    .wpcf7-form{
+      input{
+        width: 45%;
+        margin: 25px 10px;
+
+        &[type="submit"]{
+          display: block;
+          margin: 0 auto;
+          opacity: .9;
+          transition: opacity .3s ease;
+          text-transform: uppercase;
+          font-size: 14px;
+
+          &:hover{
+            opacity: 1;
+            transition: opacity .3s ease;
+            background-image: linear-gradient(0deg, #db6062 0%, #f2a7a1 100%);
+          }
+        }
+      }
+    }
+
+
+    &__balls{
+      position: absolute;
+      z-index: 9;
+
+      &--one{
+        top: -20%;
+        left: -12%;
+      }
+
+      &--two{
+        bottom: -20%;
+        right: -12%;
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

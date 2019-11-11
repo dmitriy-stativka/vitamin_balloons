@@ -61,7 +61,7 @@ button{
 
 input {
   background: rgb(158, 156, 158);
-  opacity: .5;
+  opacity: .8;
   border-radius: 5px;
   width: 175px;
   padding: 7.5px 8px;
@@ -90,16 +90,18 @@ p{
 }
 
 
-a.balloons-button{
+.balloons-button{
   box-shadow: 0 2px 12px rgba(219, 96, 98, 0.36);
   border-radius: 28px;
   background-image: linear-gradient(0deg, #db6062 0%, #f2a7a1 100%);
   opacity: .8;
   transition: opacity .3s ease;
-  color: $white;
+  color: $white!important;
   padding: 18px 35px;
   font-weight: 700;
   display: inline-block;
+  max-width: 250px;
+  width: 100%;
 
   &:hover{
     opacity: 1;

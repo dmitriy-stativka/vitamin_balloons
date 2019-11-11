@@ -1,0 +1,138 @@
+.questions{
+  padding: 200px 0 50px 0;
+}
+
+
+$primary-light:#ffffff;
+$primary-dark:#000000;
+
+.accordion {
+  width: 100%;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 2rem;
+
+
+  .title{
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.accordion-item {
+  position: relative;
+  border-radius: 25px;
+  background-color: #f1f8fb;
+  margin: 15px 0;
+
+  .ask{
+    margin-right: 10px;
+    color: #6e95a8;;
+    visibility: hidden;
+    font-weight: 700;
+    font-size: 0;
+    transition: font-size .1s ease;
+
+    &_red{
+      @extend .ask;
+      color: #db6062;
+    }
+  }
+
+  &.active {
+      .heading {
+          color: $primary-dark;
+      }
+
+      .icon {
+          background: $white;
+
+          &:before {
+              background: $red;
+          }
+
+          &:after {
+              width: 0;
+          }
+      }
+      .ask{
+        visibility: visible;
+        font-size: 14px;
+        transition: font-size .1s ease;
+      }
+  }
+  
+  .heading {
+      display: block;
+      text-decoration: none;
+      color: $primary-dark;
+      font-weight: 700;
+      font-size: 1rem;
+      position: relative;
+      padding: 20px 20px 20px 20px;
+      transition: 0.3s ease-in-out;
+
+      @media (min-width: 40rem) {
+          font-size: 1.2rem;
+      }
+
+      &:hover {
+          color: $primary-dark;
+          
+          .icon {
+              &:before,
+              &:after {
+                  background: $red;
+              }
+          }
+      }
+  }
+
+  .icon {
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      right: 15px;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background-color: $white;
+
+      &:before,
+      &:after {
+          content: '';
+          width: 1.25rem;
+          height: 0.25rem;
+          background: $red;
+          position: absolute;
+          border-radius: 3px;
+          left: 50%;
+          top: 50%;
+          transition: 0.3s ease-in-out;
+          transform: translate(-50%, -50%);
+      }
+
+      &:after {
+        transform: translate(-50%, -50%)
+        rotate(90deg);
+         z-index: 0;
+      }
+  }
+
+  .content {
+    display: none;
+    padding: 0px 20px 20px 20px;
+    
+    p {
+        margin-top: 0;
+    }
+    
+    @media (min-width: 40rem) {
+        line-height: 1.75;
+    }
+  }
+}
