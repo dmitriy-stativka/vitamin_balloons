@@ -4,15 +4,22 @@
     width: 100%;
     color: #373a4f;
     font-family: 'Caveat';
-    font-size: 59px;
+    font-size: 36px;
     font-weight: 700;
     letter-spacing: 1.48px;
-    line-height: 52px;
+    line-height: 36x;
     display: block;
     margin: 0 auto;
   }
 
   a{
     margin: 25px auto;
+  }
+
+  @media(min-width: $desktop) {
+    b{
+      font-size: 59px;
+      line-height: 52px;
+    }
   }
 }

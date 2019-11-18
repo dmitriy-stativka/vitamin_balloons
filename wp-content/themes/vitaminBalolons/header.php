@@ -19,58 +19,43 @@
 	<?php wp_head(); ?>
 </head>
 
-
-
-
-
 <?php $work_time = get_field('work_time');?>
-
-
-
-
-
-
-
 
 <body <?php body_class(); ?>>
 
 <div class="wrapper">
-
     <header class="header">
         <div class="flex_container header_container">
             <div class="logo">
-                <a href="#">
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
                     <img src="/wp-content/themes/vitaminBalolons/images/logo.svg" alt="">
                 </a>
             </div>
             <ul class="nav-list">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Главная</a>
+                    <a onclick="$('html, body').animate({scrollTop:$('header').offset().top}, '500', 'swing');" class="nav-link">Главная</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Наши работы</a>
+                    <a onclick="$('html, body').animate({scrollTop:$('.example').offset().top}, '500', 'swing');" class="nav-link">Наши работы</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">О компании</a>
+                    <a onclick="$('html, body').animate({scrollTop:$('.about').offset().top}, '500', 'swing');" class="nav-link">О компании</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link"> Отзывы</a>
+                    <a onclick="$('html, body').animate({scrollTop:$('.reviews').offset().top}, '500', 'swing');" class="nav-link"> Отзывы</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Вопросы</a>
+                    <a onclick="$('html, body').animate({scrollTop:$('.questions').offset().top}, '500', 'swing');" class="nav-link">Вопросы</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Контакты</a>
+                    <a onclick="$('html, body').animate({scrollTop:$('.map').offset().top}, '500', 'swing');" class="nav-link">Контакты</a>
                 </li>
             </ul>
             <div class="contact">
                 <span class="time-work"><?php echo $work_time;?></span>
                 <div class="contact-tell">
                     <a href="tel:<?php the_field('tel_phone');?>"><?php the_field('tel_phone');?></a>
-                    <a class="popup__toggle" href="#">Обратный звонок</a>
-
-                
-
+                    <a class="popup__call">Обратный звонок</a>
                 </div>
             </div>
             <div class="header-left-button">

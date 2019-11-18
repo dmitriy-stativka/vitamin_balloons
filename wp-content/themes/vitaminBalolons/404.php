@@ -7,21 +7,25 @@
  * @package utg
  */
 
-get_header();
-?>
+get_header(); ?>
 
 	<div class="main">
         <div class="error-page">
             <div class="flex_container">
                 <div class="flex_row">
-                    <div class="flex_col--1-2">
-                        <img src="/wp-content/themes/utg/images/error_image.png" alt="">
-                    </div>
+                
                     <div class="flex_col--1-2">
                         <div class="error-text">
-                            <b>Страница не найдена</b>
-                            <p>Похоже что страница, на которую Вы пытались перейти временно не доступна, или ее не существует. Проверьте правильность ввода адреса либо вернитесь на главную.</p>
-                            <a href="<?php echo esc_url( home_url( '/' ) ); ?>">ВЕРНУТЬСЯ НА ГЛАВНУЮ</a>
+                            <b>404</b>
+                            <span>Страница не найдена</span>
+                            <p>Страница, на которую Вы пытаетесь перейти, временно недоступна. Пожалуйста перезагрузите страницу, либо посетите сайт позже.</p>
+                            <a class="balloons-button" href="<?php echo esc_url( home_url( '/' ) ); ?>">НА ГЛАВНУЮ</a>
+                        </div>
+                    </div>
+
+                    <div class="flex_col--1-2">
+                        <div class="error-image">
+                            <img src="/wp-content/themes/vitaminBalolons/images/error_image.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -29,5 +33,4 @@ get_header();
         </div>
     </div>
 
-<?php
-get_footer();
+<?php get_footer();

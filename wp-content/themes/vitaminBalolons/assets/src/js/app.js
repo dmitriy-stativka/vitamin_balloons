@@ -35,25 +35,28 @@
   
 }());
 
-
-
-
-
-
-
-
 $('.reviews-list').slick({
   infinite: false,
   slidesToShow: 3,
   slidesToScroll: 2,
-  dots: true
+  dots: true,
+  responsive: [
+    {
+    breakpoint: 991,
+    settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1
+    }
+    },
+    {
+    breakpoint: 700,
+    settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+    }
+    }
+  ]
 });
-
-
-
-
-
-
 
 var p = $('.popup__overlay')
 $('.popup__toggle').click(function() {
@@ -63,8 +66,6 @@ $('.popup__close').click(function() {
     p.removeClass('popup_open')
 })
 
-
-
 var j = $('.popupProduct')
 $('.example-item').click(function() {
     j.addClass('popup-ajax')
@@ -73,12 +74,6 @@ $('.popup__close').click(function() {
     j.removeClass('popup-ajax')
 })
  
-
-
-	
-
-
-
 var m = $('.popup__call--back')
 $('.popup__call').click(function() {
     m.addClass('popup_open_in')

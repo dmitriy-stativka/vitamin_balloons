@@ -113,10 +113,10 @@ p{
   padding: 0px 0 50px 0;
 
   b{
-    font-size: 52px;
+    font-size: 30px;
     font-weight: 900;
     letter-spacing: 1.3px;
-    line-height: 79px;
+    line-height: 35px;
     text-transform: uppercase;
     display: flex;
     justify-content: center;
@@ -128,8 +128,19 @@ p{
       width: 23px;
       height: 23px;
       background: url('../images/star.png') no-repeat center center;
-      display: block;
+      display: none;
       margin: 0 20px;
+    }
+
+
+    @media(min-width: $desktop) {
+      font-size: 52px;
+      line-height: 79px;
+
+      &:after,
+      &:before{
+        display: block;
+      }
     }
   }
 

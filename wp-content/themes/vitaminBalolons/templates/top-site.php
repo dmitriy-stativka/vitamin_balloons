@@ -1,14 +1,14 @@
 <div class="top-site">
     <div class="flex_container">
         <div class="flex_row top-site-row">
-            <div class="flex_col--1-2">
+            <div class="flex_col-desk--1-2">
                 <b><?php the_field('title_on_first_screen');?></b>
                 <p><?php the_field('text_on_first_screen');?></p>
                 <div class="top-button">
                     <a class="balloons-button popup__call">ПЕРЕЗВОНИТЕ МНЕ</a>
                 </div>
             </div>
-            <div class="flex_col--1-2">
+            <div class="flex_col-desk--1-2">
                 <div class="top-image">
                     <img src="/wp-content/themes/vitaminBalolons/images/balloons.png" alt="">
                 </div>

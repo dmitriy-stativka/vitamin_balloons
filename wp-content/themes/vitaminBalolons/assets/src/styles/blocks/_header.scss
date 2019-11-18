@@ -1,29 +1,44 @@
 .header{
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   right: 0;
   margin: auto;
+  z-index: 99;
 
   &_container{
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
-    padding: 60px 0 50px 0;
-    
+    padding: 0 10px;
+
+    @media(min-width: $desktop){
+      padding: 20px 15px;
+    }
+
     .logo{
-      position: absolute;
-      left: -150px;
-      top: 15px;
-      bottom: 0;
-      margin: auto;
+      position: static;
+      padding: 15px 0;
+      
+      @media(max-width: 480px){
+        width: 40%;
+      }
+
+      @media(min-width: $desktop-full) {        
+        position: absolute;
+        left: -150px;
+        top: 15px;
+        bottom: 0;
+        margin: auto;
+      }
     }
   }
 
   .contact{
     display: flex;
     align-items: center;
+    flex-direction: column;
 
     &-tell{
       display: flex;
@@ -31,37 +46,67 @@
       align-items: flex-end;
 
       a{
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 700;
         letter-spacing: 0.42px;
 
-        &.popup__toggle{
+        &.popup__call{
           color: $red;
           font-size: 13px;
           letter-spacing: 0.35px;
           text-decoration: underline;
           margin-top: 5px;
         }
+
+        @media(min-width: $desktop){
+          font-size: 16px;
+        }
       }
     }
 
     .time-work{
-      margin-right: 40px;
+      margin: 0 0 7px 0;
       font-weight: 500;
       letter-spacing: 0.35px;
+
+      @media(min-width: $desktop) {
+        display: none;
+      }
+
+      @media(min-width: $desktop-full) {
+        margin-top: 0;
+        display: block;
+        margin: 8px 40px 0 0;
+      }
+    }
+
+
+    @media(min-width: $desktop){
+      flex-direction: row;
+
+      .time-work{
+        margin: 0 0 7px 0;
+      }
     }
   }
 
   &-left-button{
-    position: absolute;
-    z-index: 9;
-    right: -200px;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    display: flex;
-    align-items: center;
+    position: static;
+    display: none;
+
+    @media(min-width: $desktop-full) {
+      position: absolute;
+      z-index: 9;
+      right: -200px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      display: flex;
+      align-items: center;
+    }
   }
+
+  
 }
 
 .nav{
@@ -83,6 +128,7 @@
       bottom: 0;
       right: 0;
       margin: auto;
+      display: none;
     }
 
     &:last-child{
@@ -90,17 +136,35 @@
         display: none;
       }
     }
+
+
+    @media(min-width: $desktop) {
+      &:after{
+        display: block;
+      }
+    }
   }
 
   &-link{
-    padding: 15px 20px;
+    padding: 10px;
     font-family: 'Caveat';
-    font-size: 18px;
     font-weight: 700;
     color: #373a4f;
     cursor: pointer;
-    text-transform: uppercase;
     position: relative;
+    display: none;
+
+    @media(max-width: 1110px) {
+      font-size: 18px;
+      text-transform: none;
+    }
+
+    @media(min-width: $desktop) {
+      display: block;
+      font-size: 18px;
+      padding: 15px 20px;
+      text-transform: uppercase;
+    }
 
     &:after{
       content: '';
@@ -121,5 +185,8 @@
         left: 0; 
       }
     }
+
+
+    
   }
 }

@@ -30,10 +30,8 @@
                                 </div>                                
                             </li>
 
-                            
-
                             <?php endwhile; ?>
-                    <?php endif; ?>
+                    <?php endif; ?>   
             </ul>
         </div>
         <div class="scrollbar-nav">

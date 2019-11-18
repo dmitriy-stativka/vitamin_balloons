@@ -1,5 +1,9 @@
 .questions{
-  padding: 200px 0 50px 0;
+  padding: 50px 0;
+
+  @media(min-width: $desktop) {
+    padding: 200px 0 50px 0;
+  }
 }
 
 $primary-light:#ffffff;
@@ -43,52 +47,52 @@ $primary-dark:#000000;
   }
 
   &.active {
-      .heading {
-          color: $primary-dark;
+    .heading {
+      color: $primary-dark;
+    }
+
+    .icon {
+      background: $white;
+
+      &:before {
+        background: $red;
       }
 
-      .icon {
-          background: $white;
-
-          &:before {
-              background: $red;
-          }
-
-          &:after {
-              width: 0;
-          }
+      &:after {
+        width: 0;
       }
-      .ask{
-        visibility: visible;
-        font-size: 14px;
-        transition: font-size .1s ease;
-      }
+    }
+    .ask{
+      visibility: visible;
+      font-size: 14px;
+      transition: font-size .1s ease;
+    }
   }
   
   .heading {
-      display: block;
-      text-decoration: none;
+    display: block;
+    text-decoration: none;
+    color: $primary-dark;
+    font-weight: 700;
+    font-size: 1rem;
+    position: relative;
+    padding: 20px 20px 20px 20px;
+    transition: 0.3s ease-in-out;
+
+    @media (min-width: 40rem) {
+        font-size: 1.2rem;
+    }
+
+    &:hover {
       color: $primary-dark;
-      font-weight: 700;
-      font-size: 1rem;
-      position: relative;
-      padding: 20px 20px 20px 20px;
-      transition: 0.3s ease-in-out;
-
-      @media (min-width: 40rem) {
-          font-size: 1.2rem;
+      
+      .icon {
+        &:before,
+        &:after {
+            background: $red;
+        }
       }
-
-      &:hover {
-          color: $primary-dark;
-          
-          .icon {
-              &:before,
-              &:after {
-                  background: $red;
-              }
-          }
-      }
+    }
   }
 
   .icon {
@@ -142,6 +146,14 @@ $primary-dark:#000000;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px 0;
+
+  @media(min-width: $desktop) {
+    overflow: inherit;
+    padding: 0;
+  }
 
   li{
     &:not(:last-child) {
@@ -154,10 +166,7 @@ $primary-dark:#000000;
       top: 4px;
       padding: 15px 40px;
       font-size: 16px;
-      
       font-weight: 600;
-      
-      
       opacity: 0.5;
       transition: all 0.1s ease-in-out;
     }
@@ -166,13 +175,11 @@ $primary-dark:#000000;
     a:hover{
       opacity: 1;
       top: 0;
-
       color: $red;
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
       cursor: pointer;
       background: white;
       border-radius: 50px;
-
     }
   }
 
@@ -189,29 +196,17 @@ $primary-dark:#000000;
       display: block;
     }
   }
-  
 }
 
 @media screen and (max-width: 600px) {
   .tabs {
-    flex-direction: column;
 
     li {
       width: 100%;
+      text-align: center;
 
       &:not(:last-child) {
         margin-right: 0;
-      }
-
-      a {
-        border-radius: 0;
-        opacity: 1;
-        top: 0;
-      }
-
-      &.active a::before {
-        content: "•";
-        padding-right: 5px;
       }
     }
 
@@ -219,5 +214,4 @@ $primary-dark:#000000;
       border-radius: 0;
     }
   }
-
 }

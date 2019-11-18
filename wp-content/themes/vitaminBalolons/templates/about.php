@@ -1,7 +1,7 @@
 <div class="about">
     <div class="flex_container">
         <div class="flex_row">
-            <div class="flex_col--1-2">
+            <div class="flex_col-desk--1-2">
                 <div class="block-title">
                     <b>О компании</b>
                     <span>Мы гордимся своей работой!</span>
@@ -10,23 +10,29 @@
                         global $post;
                     ?>
                     <p><?php the_field('text_about');?></p>
-                    
                 </div>
             </div>
-            <div class="flex_col--1-2">
+            <div class="flex_col-desk--1-2">
                 <ul class="about-list">
-                    <li class="about-item">
-                        <span>01</span>
-                        <p>Единственные даем гарантию на полет латексных шаров 3 дня</p>
-                    </li>
-                    <li class="about-item">
-                        <span>02</span>
-                        <p>Наши цены дешевле чем у конкурентов.</p>
-                    </li>
-                    <li class="about-item">
-                        <span>03</span>
-                        <p>Быстрое изготовление заказа (в теч 2х часов)</p>
-                    </li>
+                    <?php 
+                        $params = array(
+                            'post_type' => 'utp_text',
+                            'posts_per_page' => -1,
+                        );
+                        $query = new WP_Query( $params );
+                        ?>
+                        <?php if($query->have_posts()): ?>
+                            <?php $number = 0; ?>
+                                <?php while ($query->have_posts()): $query->the_post() ?>
+                                <?php $number++?>
+                                    <?php $utp_item = get_field('text_utp');
+                                    echo $params->posts_per_page; ?>
+                                    <li class="about-item">
+                                        <span>0<?php echo $number;?></span>
+                                        <p><?php echo $utp_item;?></p>
+                                    </li>
+                                <?php endwhile; ?>
+                        <?php endif; ?>
                 </ul>
             </div>
         </div>

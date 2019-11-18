@@ -18,7 +18,6 @@
         max-width: 300px;
         max-height: 300px;
         overflow: hidden;
-        margin: 10px;
 
         &-min{
           max-width: 90px;
@@ -141,6 +140,10 @@
     visibility: visible;
   }
 
+  &_open_in{
+    z-index: 9999999999999999;
+  }
+
   &__close {
     display: block;
     position: absolute;
@@ -243,16 +246,21 @@
   }
 
   &__in{
-    background: url('../images/bg_callBack.png') no-repeat center center;
-    background-size: contain;
-    max-width: 880px;
-    width: 100%;
-    padding: 80px 80px 60px 80px;
+    border: 8px solid #f4e2c8;
+    max-width: 360px;
+    width: 95%;
+    padding: 10px;
+
+
 
     .popup__close{
-      right: 60px;
-      top: 35px;
+      right: -25px;
+      top: -25px;
+      z-index: 999999999999;
+      background: #fff;
     }
+
+    
 
     .balloons-button{
       padding: 20px 15px;
@@ -263,7 +271,9 @@
 
       b{
         font-family: 'Caveat';
-        font-size: 42px;
+        
+        font-size: 21px;
+        line-height: 26px;
         font-weight: 700;
         width: 100%;
         display: flex;
@@ -282,13 +292,18 @@
 
     .wpcf7-form{
       input{
-        width: 45%;
-        margin: 25px 10px;
+        width: 100%;
+        margin: 10px 0;
 
         &[type="submit"]{
+          position: absolute;
+          right: 0;
+          left: 0;
+          margin: auto;
+          bottom: -30px;
           display: block;
           margin: 0 auto;
-          opacity: .9;
+          opacity: 1;
           transition: opacity .3s ease;
           text-transform: uppercase;
           font-size: 14px;
@@ -305,6 +320,7 @@
     &__balls{
       position: absolute;
       z-index: 9;
+      display: none;
 
       &--one{
         top: -20%;
@@ -316,5 +332,43 @@
         right: -12%;
       }
     }
+
+    @media(min-width: $desktop) {
+      max-width: 880px;
+      border: 13px solid #f4e2c8;
+      padding: 80px 80px 60px 80px;
+
+      .popup__close{
+        right: 60px;
+        top: 35px;
+      }
+
+      &__balls{
+        display: block;
+      }
+
+      .wpcf7-form{
+        input{
+          width: 45%;
+          margin: 25px 10px;
+          
+          &[type="submit"]{
+            position: static;
+            opacity: .9;
+          }
+        }
+      }
+
+      .block-title{
+        b{
+          font-size: 42px;
+        }
+      }
+    }
+  }
+
+  a{
+    opacity: 1;
+    position: absolute;
   }
 }

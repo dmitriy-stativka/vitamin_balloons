@@ -244,17 +244,6 @@ register_post_type('products', array(
     'supports'            => array( 'title', 'comments'  )  // 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields',
 ));
 
-
-
-
-
-
-
-
-
-
-
-
 register_post_type('questions', array(
     'labels'             => array(
         'name'               => 'Вопросы', // Основное название типа записи
@@ -285,7 +274,33 @@ register_post_type('questions', array(
 
 
 
-
+register_post_type('utp_text', array(
+    'labels'             => array(
+        'name'               => 'УТП', // Основное название типа записи
+        'singular_name'      => 'УТП', // отдельное название записи типа Book
+        'add_new'            => 'Добавить УТП',
+        'add_new_item'       => 'Добавить новый УТП',
+        'edit_item'          => 'Редактировать УТП',
+        'new_item'           => 'Новый УТП',
+        'view_item'          => 'Посмотреть УТП',
+        'search_items'       => 'Найти сервис',
+        'not_found'          => 'Не найдено',
+        'not_found_in_trash' => 'В корзине ничего не найдено',
+        'parent_item_colon'  => '',
+        'menu_name'          => 'УТП'
+      ),
+    'public'             => true,
+    'publicly_queryable' => true,
+    'show_ui'            => true,
+    'show_in_menu'       => true,
+    'query_var'          => true,
+    'rewrite'            => true,
+    'capability_type'    => 'post',
+    'has_archive'        => false,
+    'hierarchical'       => false,
+    'menu_position'      => null,
+    'supports'            => array( 'title', 'comments'  )  // 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields',
+));
 
 
 

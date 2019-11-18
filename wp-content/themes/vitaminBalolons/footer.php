@@ -38,6 +38,7 @@
                 <span class="footer-copywrite">©Vitamin balloons 2019.</span>
             </div>
         </div>
+        <span id="call-fix" class="popup__call"></span>
     </footer>
 
     <div class="popup__overlay">
