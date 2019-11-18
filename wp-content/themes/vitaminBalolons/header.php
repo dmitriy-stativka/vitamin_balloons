@@ -19,6 +19,19 @@
 	<?php wp_head(); ?>
 </head>
 
+
+
+
+
+<?php $work_time = get_field('work_time');?>
+
+
+
+
+
+
+
+
 <body <?php body_class(); ?>>
 
 <div class="wrapper">
@@ -51,15 +64,17 @@
                 </li>
             </ul>
             <div class="contact">
-                <span class="time-work">Пн-пт: 09:00 - 18:00</span>
+                <span class="time-work"><?php echo $work_time;?></span>
                 <div class="contact-tell">
-                    <a href="tel:+380 66 128 54 64">+38(066)128-54-64</a>
+                    <a href="tel:<?php the_field('tel_phone');?>"><?php the_field('tel_phone');?></a>
                     <a class="popup__toggle" href="#">Обратный звонок</a>
+
+                
+
                 </div>
             </div>
             <div class="header-left-button">
-                <a class="balloons-button" href="#">Сделать заказ</a>
+                <a class="balloons-button popup__call">Сделать заказ</a>
             </div>
-
         </div>
     </header>

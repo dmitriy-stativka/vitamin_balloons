@@ -12,9 +12,33 @@
 ?>
 
 	<footer class="footer">
-		
+        <div class="flex_container">
+            <div class="footer-list">
+                <a onclick="$('html, body').animate({scrollTop:$('header').offset().top}, '500', 'swing');" class="footer-up">Наверх</a>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a onclick="$('html, body').animate({scrollTop:$('header').offset().top}, '500', 'swing');" class="nav-link">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="$('html, body').animate({scrollTop:$('.example').offset().top}, '500', 'swing');" class="nav-link">Наши работы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="$('html, body').animate({scrollTop:$('.about').offset().top}, '500', 'swing');" class="nav-link">О компании</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="$('html, body').animate({scrollTop:$('.reviews').offset().top}, '500', 'swing');" class="nav-link"> Отзывы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="$('html, body').animate({scrollTop:$('.questions').offset().top}, '500', 'swing');" class="nav-link">Вопросы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="$('html, body').animate({scrollTop:$('.map').offset().top}, '500', 'swing');" class="nav-link">Контакты</a>
+                    </li>
+                </ul>
+                <span class="footer-copywrite">©Vitamin balloons 2019.</span>
+            </div>
+        </div>
     </footer>
-
 
     <div class="popup__overlay">
         <div class="popup">
@@ -29,13 +53,9 @@
         </div>
     </div>
 
-
-
-
     <div class="popup__call--back">
         <div class="popup popup__in">
             <img class="popup__in__balls popup__in__balls--one" src="/wp-content/themes/vitaminBalolons/images/ball_two.png" alt="">
-            
             <a class="popup__close"></a>
             <div class="text-center">
                 <div class="block-title">
@@ -50,101 +70,20 @@
             <img class="popup__in__balls popup__in__balls--two" src="/wp-content/themes/vitaminBalolons/images/ball_one.png" alt="">
         </div>
     </div>
-    
+
+
+    <div class="popupProduct">
+        <div class="popup">
+            <div class="popupProduct-description">
+                
+            </div>
+            <a class="popup__close"></a>
+            <a class="balloons-button popup__call">Сделать заказ</a>
+        </div>
+    </div>
 
 
 <?php wp_footer(); ?>
-
-<script>
-
-$('.reviews-list').slick({
-  infinite: false,
-  slidesToShow: 3,
-  slidesToScroll: 2,
-  dots: true
-});
-
-
-
-
-
-
-
-var p = $('.popup__overlay')
-$('.popup__toggle').click(function() {
-    p.addClass('popup_open')
-})
-p.click(function(event) {
-    e = event || window.event
-    if (e.target == this) {
-        $(p).removeClass('popup_open');
-    }
-})
-$('.popup__close').click(function() {
-    p.removeClass('popup_open')
-})
-$(function() {
-    $('.popup__toggle').bind('click', function(e) {
-        e.preventDefault();
-    });
-});
-    
-	
-
-
-
-var m = $('.popup__call--back')
-$('.popup__call').click(function() {
-    m.addClass('popup_open_in')
-})
-m.click(function(event) {
-    t = event || window.event
-    if (t.target == this) {
-        $(m).removeClass('popup_open_in');
-    }
-})
-$('.popup__close').click(function() {
-    m.removeClass('popup_open_in')
-})
-$(function() {
-    $('.popup__call').bind('click', function(t) {
-        t.preventDefault();
-    });
-});
-    
-
-$('.accordion-item .heading').on('click', function(e) {
-    e.preventDefault();
-
-    // Add the correct active class
-    if($(this).closest('.accordion-item').hasClass('active')) {
-        // Remove active classes
-        $('.accordion-item').removeClass('active');
-    } else {
-        // Remove active classes
-        $('.accordion-item').removeClass('active');
-
-        // Add the active class
-        $(this).closest('.accordion-item').addClass('active');
-    }
-
-    // Show the content
-    var $content = $(this).next();
-    $content.slideToggle(100);
-    $('.accordion-item .content').not($content).slideUp('fast');
-});
-
-
-
-
-
-
-
-        
-
-
-
-</script>
 
 </body>
 </html>

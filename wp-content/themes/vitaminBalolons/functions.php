@@ -132,6 +132,10 @@ function utg_scripts() {
 
     wp_enqueue_script( 'sky-js', 'https://cdnjs.cloudflare.com/ajax/libs/Sly/1.6.1/sly.min.js', array(), null, true );
 
+    wp_enqueue_script( 'sky-ajax', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js', array(), null, true );
+
+    
+
     wp_enqueue_script( 'app.min.js', get_template_directory_uri() ."/js/app.min.js" , array(), null, true );
 
 
@@ -251,6 +255,39 @@ register_post_type('products', array(
 
 
 
+register_post_type('questions', array(
+    'labels'             => array(
+        'name'               => 'Вопросы', // Основное название типа записи
+        'singular_name'      => 'Вопросы', // отдельное название записи типа Book
+        'add_new'            => 'Добавить ответ',
+        'add_new_item'       => 'Добавить новый ответ',
+        'edit_item'          => 'Редактировать ответ',
+        'new_item'           => 'Новый ответ',
+        'view_item'          => 'Посмотреть ответ',
+        'search_items'       => 'Найти сервис',
+        'not_found'          => 'Не найдено',
+        'not_found_in_trash' => 'В корзине ничего не найдено',
+        'parent_item_colon'  => '',
+        'menu_name'          => 'Вопросы и ответы'
+      ),
+    'public'             => true,
+    'publicly_queryable' => true,
+    'show_ui'            => true,
+    'show_in_menu'       => true,
+    'query_var'          => true,
+    'rewrite'            => true,
+    'capability_type'    => 'post',
+    'has_archive'        => false,
+    'hierarchical'       => false,
+    'menu_position'      => null,
+    'supports'            => array( 'title', 'comments'  )  // 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields',
+));
+
+
+
+
+
+
 
 
 
@@ -271,57 +308,64 @@ function posts_loader() {
 	$nonce = $_POST['nonce'];
 
 	if ( wp_verify_nonce( $nonce, 'ajax-nonce' ) ) {
-		if ( ! isset( $_POST['productID'] ) ) {
+		if ( ! isset( $_POST['idPost'] ) ) {
 			return;
 		}
 
-		$postOffset  = $_POST['productID'];
+		$idPost  = $_POST['idPost'];
 
-		$params = array(
-			'post_type'      => $post_type,
-			'posts_per_page' => $post_perpage,
-			'offset'         => $post_offset,
-		);
-		$query  = new WP_Query( $params );
-		ob_start();
-		?>
-		<?php if ( $query->have_posts() ): ?>
-			<?php while ( $query->have_posts() ): $query->the_post() ?>
+	
+		 ob_start();
+        ?>
 
 
-            <?php $desc = get_field('description');?>
+        <div class="popup-gallery">
+
+            <div class="slider-for">
+                <?php
+                    $name_new = get_field('gallery', $idPost);
+                    $a = count($name_new);
+                    for ($i = 0; $i < $a; $i++) { ?>
+                    <div class="popup-image">
+                        <img src="<?php echo $name_new[$i]['url'];?>">
+                    </div>
+                    <?php } 
+                ?>
+            </div>
+
+            <div class="slider-nav">
+                <?php
+                    $name_new = get_field('gallery', $idPost);
+                    $a = count($name_new);
+                    for ($i = 0; $i < $a; $i++) { ?>
+                    <div class="popup-image">
+                        <img src="<?php echo $name_new[$i]['url'];?>">
+                    </div>
+                    <?php } 
+                ?>
+            </div>
+
+        </div>
+
+        <div class="popup-desc">
+            <b><?php echo get_the_title($idPost); ?></b>
+            <span><?php echo get_the_date('d.m.Y', $idPost);?></span>
+            <?php echo get_field('description', $idPost); ?>
+        </div>
 
 
 
-
-				<div class="popup">
-					<a href="<?php echo the_permalink( $post->ID ); ?>" class="popup_link">
-						<div class="popup_image">
-							<?php echo get_the_post_thumbnail( $post->ID ); ?>
-						</div>
-						<div class="popup_text">
-							<span class="popup-title"><?php the_title(); ?></span>
-						</div>
-
-                        <?php echo $description;?>
-
-					</a>
-				</div>
-
-
-                
-
-
-			<?php endwhile; ?>
-		<?php endif; ?>
-
+				
 		<?php
 		$content = ob_get_clean();
-		wp_reset_query();
+        
+        // $content = [];
+        // $content['title']       = get_the_title($idPost);
+        // $content['description'] = get_field('description', $idPost);
+        // $content['gallery']     = get_field('gallery', $idPost); 
 
 		echo json_encode( array(
 			'content'   => $content,
-			'postTotal' => ''
 		) );
 		exit;
 	}

@@ -1,0 +1,124 @@
+.map{
+  position: relative;
+  margin: 50px 0;
+  background: url('../images/map.png') no-repeat center center;
+  min-height: 730px;
+  max-height: 800px;
+  
+  &:before,
+  &:after{
+    content: "";
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    background: linear-gradient(0deg,hsla(0,0%,98%,0),#fbfbfb);
+    height: 130px;
+    z-index: 1;
+  }
+
+  &:after{
+    bottom: 0;
+    top: inherit;
+    background: linear-gradient(180deg,hsla(0,0%,98%,0),#fbfbfb);
+  }
+
+  iframe{
+    width: 100%;
+    border: none;
+    height: 600px;
+  }
+
+  &--info{
+    max-width: 480px;
+    max-height: 290px;
+    position: absolute;
+    top: -293px;
+    bottom: 0;
+    left: 0;
+    right: -81px;
+    margin: auto;
+    background-color: $white;   
+    padding: 35px;
+    border-radius: 3em 3em/1em 1em;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &:after{
+      content: '';
+      width: 0;
+      height: 0;
+      border: 15px solid transparent;
+      border-top-color: $white;
+      border-bottom: 0;
+      display: block;
+      position: absolute;
+      right: 0;
+      left: 0;
+      bottom: -15px;
+      margin: auto;
+    }
+  }
+
+  &-logo,
+  &-text{
+    flex-basis: 50%;
+    padding: 0 15px;
+    position: relative;
+  }
+
+  &-text{
+    padding: 0 10px 0 20px;
+
+    b{
+      font-weight: 500;
+      letter-spacing: 0.35px;
+      line-height: 24px;
+      margin-bottom: -20px;
+      display: block;
+    }
+  }
+
+  &-logo{
+    &:after{
+      content: '';
+      width: 2px;
+      height: 50px;
+      background-color: #262626;
+      display: block;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+
+    img{
+      margin: 0 auto;
+    }
+  }
+
+  &-adress{
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    a{
+      margin: 15px 0;
+    }
+
+    & > * {
+      font-size: 16px;
+      font-weight: 600;
+      color: #373a4f;
+    }
+  }
+}
+
+.place-card.place-card-large{
+  display: none!important;
+}

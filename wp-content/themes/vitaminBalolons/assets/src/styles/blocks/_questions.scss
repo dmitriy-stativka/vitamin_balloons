@@ -2,17 +2,10 @@
   padding: 200px 0 50px 0;
 }
 
-
 $primary-light:#ffffff;
 $primary-dark:#000000;
 
 .accordion {
-  width: 100%;
-  max-width: 75rem;
-  margin: 0 auto;
-  padding: 2rem;
-
-
   .title{
     font-size: 15px;
     font-weight: 500;
@@ -26,6 +19,14 @@ $primary-dark:#000000;
   border-radius: 25px;
   background-color: #f1f8fb;
   margin: 15px 0;
+
+  &.description_tab{
+    padding: 15px 20px;
+
+    p{
+      margin: 0;
+    }
+  }
 
   .ask{
     margin-right: 10px;
@@ -128,11 +129,95 @@ $primary-dark:#000000;
     padding: 0px 20px 20px 20px;
     
     p {
-        margin-top: 0;
+        margin: 0;
     }
     
     @media (min-width: 40rem) {
         line-height: 1.75;
     }
   }
+}
+
+.tabs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  li{
+    &:not(:last-child) {
+      margin-right: 7px;
+    }
+
+    a {
+      display: block;
+      position: relative;
+      top: 4px;
+      padding: 15px 40px;
+      font-size: 16px;
+      
+      font-weight: 600;
+      
+      
+      opacity: 0.5;
+      transition: all 0.1s ease-in-out;
+    }
+
+    &.active a,
+    a:hover{
+      opacity: 1;
+      top: 0;
+
+      color: $red;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+      cursor: pointer;
+      background: white;
+      border-radius: 50px;
+
+    }
+  }
+
+  &-content {
+    position: relative;
+    z-index: 2;
+    margin-top: 50px;
+  }
+
+  &-panel{
+    display: none;
+
+    &.active{
+      display: block;
+    }
+  }
+  
+}
+
+@media screen and (max-width: 600px) {
+  .tabs {
+    flex-direction: column;
+
+    li {
+      width: 100%;
+
+      &:not(:last-child) {
+        margin-right: 0;
+      }
+
+      a {
+        border-radius: 0;
+        opacity: 1;
+        top: 0;
+      }
+
+      &.active a::before {
+        content: "•";
+        padding-right: 5px;
+      }
+    }
+
+    &-content {
+      border-radius: 0;
+    }
+  }
+
 }

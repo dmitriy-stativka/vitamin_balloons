@@ -74,8 +74,7 @@ input {
     padding: 15px;
     cursor: pointer;
   }
-
-
+  
   &:visited,
   &:active,
   &:hover,
@@ -89,7 +88,6 @@ p{
   line-height: 23px;
 }
 
-
 .balloons-button{
   box-shadow: 0 2px 12px rgba(219, 96, 98, 0.36);
   border-radius: 28px;
@@ -101,7 +99,9 @@ p{
   font-weight: 700;
   display: inline-block;
   max-width: 250px;
+  cursor: pointer;
   width: 100%;
+  text-align: center;
 
   &:hover{
     opacity: 1;
@@ -150,7 +150,10 @@ p{
   }
 }
 
-
 .text-center{
   text-align: center;
+}
+
+.slick-slide{
+  outline: none;
 }
