@@ -112,3 +112,4 @@ $('.tabs-content .tabs-panel:first-child').addClass('active');
 $('.tabs-panel').each(function(val) {
     $(this).attr('data-index', val);
 });
+

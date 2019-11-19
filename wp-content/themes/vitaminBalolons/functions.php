@@ -125,50 +125,21 @@ function utg_scripts() {
     wp_enqueue_style( 'googlefont-style', 'https://fonts.googleapis.com/css?family=Caveat:400,700|Montserrat:500,700,900&display=swap&subset=cyrillic' );
 	wp_enqueue_style( 'legacy-style', get_template_directory_uri() ."/styles/styles.min.css" );
 	wp_enqueue_style( 'slick-style', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css' );
-
 	wp_deregister_script( 'jquery' );
 	wp_enqueue_script( 'jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js', array(), null, true );
     wp_enqueue_script( 'slick-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js', array(), null, true );
-
     wp_enqueue_script( 'sky-js', 'https://cdnjs.cloudflare.com/ajax/libs/Sly/1.6.1/sly.min.js', array(), null, true );
-
     wp_enqueue_script( 'sky-ajax', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js', array(), null, true );
-
-    
-
     wp_enqueue_script( 'app.min.js', get_template_directory_uri() ."/js/app.min.js" , array(), null, true );
-
-
-
-
-
-
-
-    
     wp_enqueue_script('ajax-load', get_template_directory_uri() . '/js/ajax-load.js', array(), null, true);
-    
     wp_localize_script( 'ajax-load', 'ajax_vars',
     array(
         'ajax_url' => admin_url( 'admin-ajax.php' ),
         'nonce' => wp_create_nonce( 'ajax-nonce' ),
         'home_url' => get_bloginfo( 'url' )
     ));
-    
-    
-
-
-
-    
-	
-
 	wp_enqueue_script( 'utg-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-
     wp_enqueue_script( 'utg-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
-    
-    // wp_enqueue_script( 'jquery.xeyes-2.0', get_template_directory_uri() . '/js/jquery.xeyes-2.0.min.js', array(), '20151215', true );
-
-
-
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -208,13 +179,6 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
-
-
-
-
-
-
-
 
 register_post_type('products', array(
     'labels'             => array(
@@ -272,8 +236,6 @@ register_post_type('questions', array(
     'supports'            => array( 'title', 'comments'  )  // 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields',
 ));
 
-
-
 register_post_type('utp_text', array(
     'labels'             => array(
         'name'               => 'УТП', // Основное название типа записи
@@ -302,19 +264,6 @@ register_post_type('utp_text', array(
     'supports'            => array( 'title', 'comments'  )  // 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields',
 ));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*ajax load post*/
 add_action( 'wp_ajax_loader_posts', 'posts_loader' );
 add_action( 'wp_ajax_nopriv_loader_posts', 'posts_loader' );
@@ -326,16 +275,11 @@ function posts_loader() {
 		if ( ! isset( $_POST['idPost'] ) ) {
 			return;
 		}
-
 		$idPost  = $_POST['idPost'];
-
-	
-		 ob_start();
-        ?>
+		ob_start(); ?>
 
 
         <div class="popup-gallery">
-
             <div class="slider-for">
                 <?php
                     $name_new = get_field('gallery', $idPost);
@@ -347,7 +291,6 @@ function posts_loader() {
                     <?php } 
                 ?>
             </div>
-
             <div class="slider-nav">
                 <?php
                     $name_new = get_field('gallery', $idPost);
@@ -359,20 +302,18 @@ function posts_loader() {
                     <?php } 
                 ?>
             </div>
-
         </div>
 
         <div class="popup-desc">
             <b><?php echo get_the_title($idPost); ?></b>
             <span><?php echo get_the_date('d.m.Y', $idPost);?></span>
-            <?php echo get_field('description', $idPost); ?>
+            <div class="popup-desc-text">
+                <?php echo get_field('description', $idPost); ?>
+            </div>
         </div>
-
-
-
-				
+	
 		<?php
-		$content = ob_get_clean();
+		    $content = ob_get_clean();
         
         // $content = [];
         // $content['title']       = get_the_title($idPost);

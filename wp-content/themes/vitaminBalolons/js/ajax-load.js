@@ -21,7 +21,6 @@ jQuery(document).ready(function ($) {
       let $btn = $(this),
           idPost = $btn.attr('data-id');
         
-
       $.ajax({
           type: "POST",
           dataType: "json",
@@ -51,7 +50,7 @@ jQuery(document).ready(function ($) {
                 asNavFor: '.slider-nav'
               });
               $('.slider-nav').slick({
-                slidesToShow: 2,
+                slidesToShow: 3,
                 slidesToScroll: 1,
                 asNavFor: '.slider-for',
                 dots: false,
@@ -62,29 +61,35 @@ jQuery(document).ready(function ($) {
                     {
                     breakpoint: 991,
                     settings: {
-                        slidesToShow: 2,
+                        slidesToShow: 4,
                         slidesToScroll: 1
                     }
                     },
                     {
                     breakpoint: 767,
                     settings: {
-                        slidesToShow: 1,
+                        slidesToShow: 3,
                         slidesToScroll: 1
                     }
                     },
                     {
                     breakpoint: 480,
                     settings: {
-                        slidesToShow: 2,
+                        slidesToShow: 3,
                         slidesToScroll: 1
                     }
+                    },
+                    {
+                      breakpoint: 340,
+                      settings: {
+                          slidesToShow: 2,
+                          slidesToScroll: 1
+                      }
                     }
                 ]
               });
 
               return;  
-
 
               $('.guide_row').append(data.content);
               postOffset = parseInt(postOffset) + parseInt(postPerpage);
@@ -99,6 +104,3 @@ jQuery(document).ready(function ($) {
       });
   });
 });
-
-
-

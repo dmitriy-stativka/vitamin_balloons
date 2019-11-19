@@ -1,7 +1,11 @@
 .reviews{
   background: url('../images/sky.png') no-repeat center bottom;
   background-size: contain;
-  padding: 150px 0;
+  padding: 50px 0 100px 0;
+
+  @media(min-width: $desktop){
+    padding: 100px 0;
+  }
 
   &-list{
     margin: 0 -15px;

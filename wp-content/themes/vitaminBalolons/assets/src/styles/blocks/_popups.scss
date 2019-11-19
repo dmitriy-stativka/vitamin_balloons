@@ -1,18 +1,31 @@
 .popup{
   display: inline-block;
   position: relative;
-  padding: 30px;
+  padding: 20px;
   background: #fff;
   vertical-align: middle;
-  width: 600px;
+  max-width: 600px;
   border-radius: 20px;
+  width: 90%;
+
+
+  @media(min-width: $desktop){
+    padding: 30px;
+    width: 100%;
+  }
 
   &Product{
 
     .popup{
-      max-width: 860px;
-      width: 100%;
-      margin: -10px;
+      max-width: 480px;
+      width: 90%;
+
+      @media(min-width: $desktop){
+        max-width: 860px;
+        width: 100%;
+        margin: -10px;
+      }
+
       
       &-image{
         max-width: 300px;
@@ -29,6 +42,7 @@
       }
 
       &-desc{
+
         span{
           display: block;
           border-bottom: 1px solid rgba(110, 149, 168, .2);
@@ -42,6 +56,35 @@
           letter-spacing: 0.35px;
           line-height: 24px;
         }
+
+        &-text{
+          max-height: 200px;
+          overflow: auto;
+          margin-bottom: 15px;
+        }
+
+
+        @media(min-width: $desktop){
+          &-text{
+            max-height: 100%;
+          }
+        }
+      }
+
+      a.balloons-button{
+        right: 0;
+        left: 0;
+        margin: auto;
+
+        @media(min-width: $desktop){
+          right: inherit;
+          left: inherit;
+        }
+      }
+
+      &__close{
+        right: -10px;
+        top: -10px;
       }
     }
 
@@ -51,32 +94,51 @@
       flex-wrap: wrap;
 
       .popup-gallery{
-        flex-basis: 40%;
+        flex-basis: 100%;
         padding: 10px;
         width: 100%;
-        max-width: 320px;
+
+        @media(min-width: $desktop){
+          flex-basis: 40%;
+          width: 100%;
+          max-width: 320px;
+        }
       }
     
       .popup-desc{
-        flex-basis: 60%;
+        flex-basis: 100%;
         padding: 10px;
         text-align: left;
+        width: 100%;
+
+        @media(min-width: $desktop){
+          flex-basis: 60%;
+        }
 
         b{
           font-size: 26px;
           font-weight: 700;
           letter-spacing: 0.65px;
-          line-height: 30px;
           margin: 5px 0 15px 0;
           max-width: 350px;
+          font-size: 21px;
+          line-height: 25px;
+          width: 100%;
+
+          @media(min-width: $desktop){
+            font-size: 26px;
+            line-height: 30px;
+          }
         }
       }
 
       .slider-nav {
+        margin-top: 10px;
+
         .popup-image {
           margin: 0;
-          width: 90px;
-          height: 90px;
+          max-width: 90px;
+          max-height: 90px;
           overflow: hidden;
           display: flex;
           flex-direction: column;
@@ -85,15 +147,11 @@
         }
 
         img {
-          margin: 10px;
           object-fit: contain;
         }
       }
     }
   }
-  
-
-
 
   .required-notice{
     display: none;
@@ -147,13 +205,19 @@
   &__close {
     display: block;
     position: absolute;
-    top: 30px;
-    right: 30px;
     width: 35px;
     height: 35px;
+    background: $white;
     cursor: pointer;
     border-radius: 50%;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    right: -15px;
+    top: -15px;
+
+    @media(min-width: $desktop){
+      top: 30px;
+      right: 30px;
+    }
 
     &:after,
     &:before{
@@ -183,18 +247,29 @@
       color: #4a4d60;
       font-size: 13px;
       font-weight: 500;
-      line-height: 29px;
+      display: block;
+      
+      line-height: 16px;
     }
   }
 
   b{
-    font-size: 26px;
+    font-size: 21px;
+    line-height: 25px;
     font-weight: 700;
     letter-spacing: 0.65px;
-    line-height: 34px;
-    width: 400px;
+    width: 100%;
+    
     display: block;
     margin: 0 auto;
+
+    @media(min-width: $desktop){
+      max-width: 400px;
+      font-size: 26px;
+      line-height: 34px;
+
+    }
+
   }
 
   input{
@@ -211,20 +286,32 @@
     padding: 10px;
     resize: none;
     outline: none;
+    height: 120px!important;
+
+    @media(min-width: $desktop){
+      height: 190px!important;
+    }
+
   }
  
   #wpmtst-submission-form{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    margin-top: 15px;
 
     .form-field{
-      flex-basis: 50%;
+      flex-basis: 100%;
+      width: 100%;
       padding: 0 10px;
 
       &.field-post_title,
       &.wpmtst-submit{
         flex-basis: 100%;
+      }
+
+      @media(min-width: $desktop) {
+        flex-basis: 50%;
       }
     }
 
@@ -241,6 +328,7 @@
         width: 100%;
         margin: 0 auto;
         background-image: linear-gradient(-1deg, #db6062 0%, #f2a7a1 100%);
+        margin-bottom: 15px;
       }
     }
   }
@@ -251,16 +339,12 @@
     width: 95%;
     padding: 10px;
 
-
-
     .popup__close{
       right: -25px;
       top: -25px;
       z-index: 999999999999;
       background: #fff;
     }
-
-    
 
     .balloons-button{
       padding: 20px 15px;
@@ -271,13 +355,16 @@
 
       b{
         font-family: 'Caveat';
-        
         font-size: 21px;
         line-height: 26px;
         font-weight: 700;
         width: 100%;
         display: flex;
         text-transform: none;
+
+        @media(min-width: $desktop){
+          line-height: 44px;
+        }
       }
 
       p{
@@ -323,7 +410,7 @@
       display: none;
 
       &--one{
-        top: -20%;
+        top: -30%;
         left: -12%;
       }
 
@@ -334,9 +421,9 @@
     }
 
     @media(min-width: $desktop) {
-      max-width: 880px;
+      max-width: 750px;
       border: 13px solid #f4e2c8;
-      padding: 80px 80px 60px 80px;
+      padding: 25px 25px 35px;
 
       .popup__close{
         right: 60px;
@@ -370,5 +457,36 @@
   a{
     opacity: 1;
     position: absolute;
+  }
+}
+
+
+
+.slider-for.slick-initialized.slick-slider{
+  display: none;
+
+  @media(min-width: $desktop) {
+    display: block;
+  }
+}
+
+.slick-slider {
+  .slick-list.draggable{
+    padding: 0!important;
+    margin: 0 -5px;
+  }
+}
+
+
+
+
+
+#wpmtst-form .strong-form{
+  &-inner{
+    padding: 0;
+  
+    @media(min-width: $desktop) {
+      padding: 0 20px;
+    }
   }
 }

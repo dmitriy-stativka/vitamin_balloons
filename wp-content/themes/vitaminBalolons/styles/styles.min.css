@@ -793,7 +793,7 @@ textarea {
 .reviews {
   background: url("../images/sky.png") no-repeat center bottom;
   background-size: contain;
-  padding: 150px 0; }
+  padding: 50px 0 100px 0; }
   .reviews-list {
     margin: 0 -15px; }
   .reviews .slick-list {
@@ -973,7 +973,7 @@ textarea {
   margin: 25px auto; }
 
 .questions {
-  padding: 50px 0; }
+  padding: 50px 0 0 0; }
 
 .accordion .title {
   font-size: 15px;
@@ -1022,7 +1022,7 @@ textarea {
     font-weight: 700;
     font-size: 1rem;
     position: relative;
-    padding: 20px 20px 20px 20px;
+    padding: 20px 50px 20px 20px;
     -webkit-transition: 0.3s ease-in-out;
     transition: 0.3s ease-in-out; }
     .accordion-item .heading:hover {
@@ -1105,7 +1105,7 @@ textarea {
 
 .map {
   position: relative;
-  margin: 50px 0;
+  margin: 0 0 50px 0;
   background: url("../images/map.png") no-repeat center center;
   min-height: 730px;
   max-height: 800px; }
@@ -1212,15 +1212,15 @@ textarea {
 .popup {
   display: inline-block;
   position: relative;
-  padding: 30px;
+  padding: 20px;
   background: #fff;
   vertical-align: middle;
-  width: 600px;
-  border-radius: 20px; }
+  max-width: 600px;
+  border-radius: 20px;
+  width: 90%; }
   .popupProduct .popup {
-    max-width: 860px;
-    width: 100%;
-    margin: -10px; }
+    max-width: 480px;
+    width: 90%; }
     .popupProduct .popup-image {
       max-width: 300px;
       max-height: 300px;
@@ -1241,44 +1241,58 @@ textarea {
       font-weight: 400;
       letter-spacing: 0.35px;
       line-height: 24px; }
+    .popupProduct .popup-desc-text {
+      max-height: 200px;
+      overflow: auto;
+      margin-bottom: 15px; }
+    .popupProduct .popup a.balloons-button {
+      right: 0;
+      left: 0;
+      margin: auto; }
+    .popupProduct .popup__close {
+      right: -10px;
+      top: -10px; }
   .popupProduct .popupProduct-description {
     margin: -10px;
     display: -webkit-box;
     display: flex;
     flex-wrap: wrap; }
     .popupProduct .popupProduct-description .popup-gallery {
-      flex-basis: 40%;
+      flex-basis: 100%;
       padding: 10px;
-      width: 100%;
-      max-width: 320px; }
+      width: 100%; }
     .popupProduct .popupProduct-description .popup-desc {
-      flex-basis: 60%;
+      flex-basis: 100%;
       padding: 10px;
-      text-align: left; }
+      text-align: left;
+      width: 100%; }
       .popupProduct .popupProduct-description .popup-desc b {
         font-size: 26px;
         font-weight: 700;
         letter-spacing: 0.65px;
-        line-height: 30px;
         margin: 5px 0 15px 0;
-        max-width: 350px; }
-    .popupProduct .popupProduct-description .slider-nav .popup-image {
-      margin: 0;
-      width: 90px;
-      height: 90px;
-      overflow: hidden;
-      display: -webkit-box;
-      display: flex;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-              flex-direction: column;
-      flex-wrap: wrap;
-      -webkit-box-align: start;
-              align-items: flex-start; }
-    .popupProduct .popupProduct-description .slider-nav img {
-      margin: 10px;
-      -o-object-fit: contain;
-         object-fit: contain; }
+        max-width: 350px;
+        font-size: 21px;
+        line-height: 25px;
+        width: 100%; }
+    .popupProduct .popupProduct-description .slider-nav {
+      margin-top: 10px; }
+      .popupProduct .popupProduct-description .slider-nav .popup-image {
+        margin: 0;
+        max-width: 90px;
+        max-height: 90px;
+        overflow: hidden;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+                flex-direction: column;
+        flex-wrap: wrap;
+        -webkit-box-align: start;
+                align-items: flex-start; }
+      .popupProduct .popupProduct-description .slider-nav img {
+        -o-object-fit: contain;
+           object-fit: contain; }
   .popup .required-notice {
     display: none; }
   .popup__overlay, .popup__call--back, .popupProduct {
@@ -1312,13 +1326,14 @@ textarea {
   .popup__close {
     display: block;
     position: absolute;
-    top: 30px;
-    right: 30px;
     width: 35px;
     height: 35px;
+    background: #fff;
     cursor: pointer;
     border-radius: 50%;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16); }
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    right: -15px;
+    top: -15px; }
     .popup__close:after, .popup__close:before {
       content: '';
       height: 3px;
@@ -1342,13 +1357,14 @@ textarea {
     color: #4a4d60;
     font-size: 13px;
     font-weight: 500;
-    line-height: 29px; }
+    display: block;
+    line-height: 16px; }
   .popup b {
-    font-size: 26px;
+    font-size: 21px;
+    line-height: 25px;
     font-weight: 700;
     letter-spacing: 0.65px;
-    line-height: 34px;
-    width: 400px;
+    width: 100%;
     display: block;
     margin: 0 auto; }
   .popup input {
@@ -1362,15 +1378,18 @@ textarea {
     border-radius: 20px;
     padding: 10px;
     resize: none;
-    outline: none; }
+    outline: none;
+    height: 120px !important; }
   .popup #wpmtst-submission-form {
     display: -webkit-box;
     display: flex;
     flex-wrap: wrap;
     -webkit-box-align: center;
-            align-items: center; }
+            align-items: center;
+    margin-top: 15px; }
     .popup #wpmtst-submission-form .form-field {
-      flex-basis: 50%;
+      flex-basis: 100%;
+      width: 100%;
       padding: 0 10px; }
       .popup #wpmtst-submission-form .form-field.field-post_title, .popup #wpmtst-submission-form .form-field.wpmtst-submit {
         flex-basis: 100%; }
@@ -1384,7 +1403,8 @@ textarea {
       max-width: 225px;
       width: 100%;
       margin: 0 auto;
-      background-image: linear-gradient(-1deg, #db6062 0%, #f2a7a1 100%); }
+      background-image: linear-gradient(-1deg, #db6062 0%, #f2a7a1 100%);
+      margin-bottom: 15px; }
   .popup__in {
     border: 8px solid #f4e2c8;
     max-width: 360px;
@@ -1440,7 +1460,7 @@ textarea {
       z-index: 9;
       display: none; }
       .popup__in__balls--one {
-        top: -20%;
+        top: -30%;
         left: -12%; }
       .popup__in__balls--two {
         bottom: -20%;
@@ -1448,6 +1468,16 @@ textarea {
   .popup a {
     opacity: 1;
     position: absolute; }
+
+.slider-for.slick-initialized.slick-slider {
+  display: none; }
+
+.slick-slider .slick-list.draggable {
+  padding: 0 !important;
+  margin: 0 -5px; }
+
+#wpmtst-form .strong-form-inner {
+  padding: 0; }
 
 .error-page {
   height: 100vh;
@@ -1565,16 +1595,20 @@ textarea {
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
                 flex-direction: row; }
+    .reviews {
+      padding: 100px 0; }
       .reviews .testimonial-field {
         display: block; }
   .sale b {
     font-size: 59px;
     line-height: 52px; }
     .questions {
-      padding: 200px 0 50px 0; }
+      padding: 100px 0 50px 0; }
     .tabs {
       overflow: inherit;
       padding: 0; }
+    .map {
+      margin: 50px 0; }
       .map--info {
         left: 0;
         right: -81px;
@@ -1589,10 +1623,44 @@ textarea {
         line-height: 24px; }
       .map-logo:after {
         display: block; }
+    .popup {
+      padding: 30px;
+      width: 100%; }
+      .popupProduct .popup {
+        max-width: 860px;
+        width: 100%;
+        margin: -10px; }
+      .popupProduct .popup-desc-text {
+        max-height: 100%; }
+        .popupProduct .popup a.balloons-button {
+          right: inherit;
+          left: inherit; }
+        .popupProduct .popupProduct-description .popup-gallery {
+          flex-basis: 40%;
+          width: 100%;
+          max-width: 320px; }
+        .popupProduct .popupProduct-description .popup-desc {
+          flex-basis: 60%; }
+          .popupProduct .popupProduct-description .popup-desc b {
+            font-size: 26px;
+            line-height: 30px; }
+      .popup__close {
+        top: 30px;
+        right: 30px; }
+      .popup b {
+        max-width: 400px;
+        font-size: 26px;
+        line-height: 34px; }
+      .popup textarea {
+        height: 190px !important; }
+        .popup #wpmtst-submission-form .form-field {
+          flex-basis: 50%; }
+          .popup__in .block-title b {
+            line-height: 44px; }
       .popup__in {
-        max-width: 880px;
+        max-width: 750px;
         border: 13px solid #f4e2c8;
-        padding: 80px 80px 60px 80px; }
+        padding: 25px 25px 35px; }
         .popup__in .popup__close {
           right: 60px;
           top: 35px; }
@@ -1605,7 +1673,11 @@ textarea {
             position: static;
             opacity: .9; }
         .popup__in .block-title b {
-          font-size: 42px; } }
+          font-size: 42px; }
+    .slider-for.slick-initialized.slick-slider {
+      display: block; }
+    #wpmtst-form .strong-form-inner {
+      padding: 0 20px; } }
 
 @media (min-width: 1600px) {
         .header_container .logo, .nav-list .logo {
@@ -1640,7 +1712,8 @@ textarea {
     .call-back {
       position: static;
       display: block;
-      text-align: center; }
+      text-align: center;
+      margin-bottom: -50px; }
       .call-back b {
         margin: 20px 0;
         display: block; } }
